@@ -1,0 +1,17 @@
+﻿@model fileUploadByMVC.Models.TestModels
+@{
+    ViewBag.Title = "Show";
+}
+
+<h2>Show</h2>
+@Html.LabelFor(mod => mod.title)
+<br />
+@Html.EditorFor(mod => mod.title)
+<br />     <br />
+@Html.LabelFor(mod => mod.Content)
+<br />
+@Html.EditorFor(mod => Model.Content)
+<br />
+图片：
+<img src="@Model.AttachmentPath" alt="img" />
+
