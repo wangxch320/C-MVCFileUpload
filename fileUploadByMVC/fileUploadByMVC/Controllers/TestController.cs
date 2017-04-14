@@ -31,7 +31,7 @@ namespace fileUploadByMVC.Controllers
             try
             {
                 file.SaveAs(fileName);
-                tm.AttachmentPath = "../upload/" + Path.GetFileName(file.FileName);
+                tm.AttachmentPath = "../File/" + Path.GetFileName(fileName);
                 return RedirectToAction("Show", tm);
             }
             catch
