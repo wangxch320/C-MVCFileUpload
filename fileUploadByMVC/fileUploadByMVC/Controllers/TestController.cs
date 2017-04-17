@@ -40,6 +40,29 @@ namespace fileUploadByMVC.Controllers
             }
         }
 
+
+        public ActionResult FileUploadTestByajax()
+        {
+            System.Web.HttpFileCollection _file = System.Web.HttpContext.Current.Request.Files;
+            HttpPostedFile file = _file[0];
+            if (file == null)
+            {
+                return Content("没有上传任何文件");
+            }
+
+            string fileExt = Path.GetExtension(Request.Files[0].FileName).ToLower();
+            string fileName = Server.MapPath(_directory) + "\\" + DateTime.Now.ToString("yyyyMMddHHmmssfff") + rnd.Next(10, 99).ToString() + fileExt;
+            try
+            {
+                file.SaveAs(fileName);
+                return Json("../File/" + Path.GetFileName(fileName));
+            }
+            catch
+            {
+                return Json("error");
+            }
+
+        }
         public ActionResult Show(TestModels tm)
         {
             return View(tm);
